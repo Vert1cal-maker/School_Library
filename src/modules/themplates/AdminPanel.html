@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<header>
+    <div class="logo">
+        <img src="/admin/logo.png" alt="">
+    </div>
+    <div class="login">
+        <img src="/admin/admin.png" alt="">
+        <p><a href="/api/v1">Бібліотека</a></p>
+        <p id="logout"> <a href="http://log:log@localhost:3030/admin/api/v1">Logout</a></p>
+    </div>
+</header>
+<body>
+    <div class="main">
+        <div class="booksTable">
+            <div class="sort">
+                <h3>Недавно добавлені книги</h3>
+                <div class="nav-sort">
+                <p>Отримати книги у розмірі</p>
+                <select name="view" id="view">
+                    <option value="0"></option>
+                    <option value="20">20 книг</option>
+                    <option value="15">15 книг</option>
+                    <option value="10">10 книг</option>
+                </select>
+                </div>
+                
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                      <th> </th>
+                      <th>Назва книги</th>
+                      <th>Автор</th>
+                      <th>Рік</th>
+                      <th>Кількість переглядів</th>
+                      <th>Рейтинг</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                        {{tableBook}}
+                  </tbody>
+            </table>
+            <div class = actionInfo> 
+            <ul class="pagination">
+              {{pagination}}
+            </ul>
+            <button id="submit"> Видалити обране</button>
+            </div> 
+         </div>
+        <div class="addPanel">
+                <form id="bookForm" action="/admin/api/v1" method="post" enctype="application/x-www-form-urlencoded">
+                    <label for="bookTitle">Назва книги:</label>
+                    <input type="text" id="bookTitle" name="bookTitle" required><br><br>
+            
+                    <label for="bookYear">Рік книги:</label>
+                    <input type="number" id="bookYear" name="bookYear" required><br><br>
+            
+                    <label for="bookPages">Кількість сторінок:</label>
+                    <input type="number" id="bookPages" name="bookPages" required><br><br>
+            
+                    <label for="bookDescription">Опис книги:</label>
+                    <textarea id="bookDescription" name="bookDescription" rows="1" required></textarea><br><br>
+            
+                    <label for="author1">Автор 1:</label>
+                    <input type="text" id="author1" name="author1" required><br><br>
+            
+                    <label for="author2">Автор 2:</label>
+                    <input type="text" id="author2" name="author2"><br><br>
+            
+                    <label for="author3">Автор 3:</label>
+                    <input type="text" id="author3" name="author3"><br><br>
+            
+                    <label for="bookImage">Фото книги:</label> 
+                    <div class="image-preview">
+                        <img id="previewImage" src="" alt="Preview">
+                    </div>
+                    <input type="file" id="bookImage" name="bookImage">
+            
+                    <button type="submit">Відправити</button>
+                </form>
+        </div>
+    </div>
+
+
+
+    <!-- Modal window -->
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p></p>
+    </div>
+  </div>
+  
+  
+      
+</body>
+
+<script src="/admin/admin.js"></script>
+
+</html>
